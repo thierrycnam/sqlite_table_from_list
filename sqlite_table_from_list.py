@@ -155,10 +155,11 @@ def get_argument_parser():
         help='Input SQLite files to merge into a single database.')
     parser.add_argument('-o', '--outfile', required=True, default=None,
         help='Output file.')
-    parser.add_argument('-t', '--tables', required=False,
-        default=None, nargs='*',
-        help='List of tables to copy. If not provided all the tables will '
-        'be copied')
+    parser.add_argument('-l', '--listfile', required=True,
+        default=None, nargs='!',
+        help='Text file containing ids to filter. First row is the column name.')
+    parser.add_argument('-s', '--sql', required=True, default=None,
+        help='File containing sql query.')
     parser.set_defaults(func=parser_handler)
     return parser
 
